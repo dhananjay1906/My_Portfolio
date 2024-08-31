@@ -2591,6 +2591,8 @@ html.no-csstransitions .hero-content {
     padding-top: 20rem;
     padding-bottom: 0;
     min-height: 0;
+    padding-left: 25px; 
+    padding-right: 25px;
   }
 
   .s-about__section--profile::before,
