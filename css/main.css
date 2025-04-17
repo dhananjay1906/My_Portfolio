@@ -2629,7 +2629,7 @@ html.no-csstransitions .hero-content {
 .s-services {
   padding-top: 24rem;
   padding-bottom: 20rem;
-  background-color: #1d1b37;
+  background-color: darkslateblue;
   position: center;
 }
 
@@ -3268,7 +3268,7 @@ html.no-csstransitions .hero-content {
 .s-footer {
   padding-top: 24rem;
   padding-bottom: 8rem;
-  background-color: #0b0a15;
+  background-color: darkslateblue;
   position: relative;
 }
 
