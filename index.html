@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dhananjay Yatin Desai — Software Engineer in Los Angeles. Full-stack developer specializing in .NET, Python, React, and Agentic AI." />
+  <title>DJ Desai — Software Engineer</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">DJ</div>
+      <div class="loader-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">DJ</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#ai" class="nav-link">AI</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-greeting fade-up">Hello, I'm</p>
+        <h1 class="hero-name fade-up">Dhananjay Yatin<br /><span class="gradient-text">Desai</span></h1>
+        <div class="hero-role fade-up">
+          <span class="role-prefix">I build </span>
+          <span id="typewriter" class="typewriter-text"></span>
+          <span class="typewriter-cursor">|</span>
+        </div>
+        <p class="hero-bio fade-up">
+          Software Engineer · MS Computer Science · Los Angeles, CA<br />
+          Crafting scalable systems and intelligent agents that make a difference.
+        </p>
+        <div class="hero-buttons fade-up">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="assets/resume/Dhananjay_Desai_Resume.pdf" class="btn btn-outline" download>
+            <i class="fas fa-download"></i> Download Resume
+          </a>
+        </div>
+        <div class="hero-socials fade-up">
+          <a href="https://www.linkedin.com/in/dj1906/" target="_blank" class="social-link" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/dhananjay1906" target="_blank" class="social-link" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:dhananjaydesai2006@gmail.com" class="social-link" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-3d" id="hero3d">
+        <!-- Three.js canvas renders here -->
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title gradient-text">About Me</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-avatar-col">
+          <div class="avatar-wrapper">
+            <div class="avatar-ring ring-1"></div>
+            <div class="avatar-ring ring-2"></div>
+            <div class="avatar-ring ring-3"></div>
+            <div class="avatar-circle">
+              <span class="avatar-initials">DJ</span>
+            </div>
+            <div class="avatar-orbit">
+              <div class="orbit-dot" style="--i:0"></div>
+              <div class="orbit-dot" style="--i:1"></div>
+              <div class="orbit-dot" style="--i:2"></div>
+              <div class="orbit-dot" style="--i:3"></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-info-col">
+          <p class="about-bio">
+            I'm DJ — a Software Engineer with an MS in Computer Science from Cal State LA,
+            currently building production systems at the County of Los Angeles. I love building
+            full-stack applications, intelligent systems, and am currently diving deep into
+            <strong class="accent-text">Agentic AI</strong>. I'm passionate about creating
+            software that makes a real difference.
+          </p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <span class="stat-number gradient-text">2+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number gradient-text">6+</span>
+              <span class="stat-label">Projects Built</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number gradient-text">2</span>
+              <span class="stat-label">Degrees</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number gradient-text">3</span>
+              <span class="stat-label">Companies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section skills reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title gradient-text">Technical Arsenal</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header">
+            <i class="fas fa-server skill-cat-icon"></i>
+            <h3>Backend</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>C#</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>ASP.NET Core</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>Blazor</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>Python</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>Django</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>Node.js</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>RESTful APIs</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>Entity Framework</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header">
+            <i class="fas fa-palette skill-cat-icon"></i>
+            <h3>Frontend</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>React</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>Angular</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>Vue.js</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>JavaScript</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>TypeScript</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>HTML5</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>CSS3</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header">
+            <i class="fas fa-cloud skill-cat-icon"></i>
+            <h3>Cloud & DevOps</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>Azure AD</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>Azure Blob Storage</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>AWS</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>Docker</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>Git</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header">
+            <i class="fas fa-database skill-cat-icon"></i>
+            <h3>Databases</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>SQL Server</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>MongoDB</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>SQLite</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header">
+            <i class="fas fa-brain skill-cat-icon"></i>
+            <h3>AI & ML</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>Machine Learning</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>NLP</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>Claude API</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>LangChain</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#ff6b9d"></span>Agentic AI ✦</span>
+          </div>
+        </div>
+
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header">
+            <i class="fas fa-shield-alt skill-cat-icon"></i>
+            <h3>Security</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>CJIS Compliance</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>Azure AD</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#6c63ff"></span>Blockchain/Solidity</span>
+            <span class="skill-pill"><span class="pill-dot" style="background:#00d4ff"></span>Cryptography</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill Bars -->
+      <div class="skill-bars-section">
+        <h3 class="skill-bars-title">Proficiency</h3>
+        <div class="skill-bars">
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>C# / ASP.NET Core</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Python</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>JavaScript / TypeScript</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>React</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>SQL / Databases</span><span class="skill-pct">82%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Azure Cloud</span><span class="skill-pct">78%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label"><span>Docker</span><span class="skill-pct">70%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section experience reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Where I've Worked</span>
+        <h2 class="section-title gradient-text">Experience</h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item reveal-item">
+          <div class="timeline-date">Sep 2024 – Present</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="exp-header">
+              <div>
+                <h3 class="exp-company">County of Los Angeles</h3>
+                <p class="exp-dept">Probation Department</p>
+              </div>
+              <span class="exp-badge">Current</span>
+            </div>
+            <p class="exp-role">Software Engineer</p>
+            <ul class="exp-bullets">
+              <li>Designed Visitation Access Control System with role-based access control using C# and ASP.NET Core, enabling CJIS-compliant security across facilities</li>
+              <li>Built full-stack features addressing legacy data integration challenges, reducing manual workflows by 40%</li>
+              <li>Integrated Azure AD for authentication and Azure Blob Storage for secure document management</li>
+            </ul>
+            <div class="exp-tags">
+              <span>C#</span><span>ASP.NET Core</span><span>Azure AD</span><span>SQL Server</span><span>Blazor</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+          <div class="timeline-date">Jun 2023 – May 2024</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="exp-header">
+              <div>
+                <h3 class="exp-company">Cal State LA</h3>
+                <p class="exp-dept">California State University</p>
+              </div>
+              <span class="exp-badge edu-badge">University</span>
+            </div>
+            <p class="exp-role">Software Developer</p>
+            <ul class="exp-bullets">
+              <li>Revamped university portal resulting in 20% traffic increase and 99.5% uptime via performance optimization</li>
+              <li>Programmed Pepper Robot for campus event speeches, increasing student participation by 15%</li>
+              <li>Enhanced data security using Entity Framework Core and streamlined budget tracking systems</li>
+            </ul>
+            <div class="exp-tags">
+              <span>Python</span><span>React</span><span>EF Core</span><span>PostgreSQL</span><span>Robotics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-item">
+          <div class="timeline-date">Jul 2020 – Aug 2021</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="exp-header">
+              <div>
+                <h3 class="exp-company">MaxTech India</h3>
+                <p class="exp-dept">Technology Solutions</p>
+              </div>
+              <span class="exp-badge intern-badge">Full-time</span>
+            </div>
+            <p class="exp-role">Software Engineer</p>
+            <ul class="exp-bullets">
+              <li>Increased client conversion rates by 25% through iterative UX improvements and A/B testing</li>
+              <li>Built backend services and REST APIs using Python and Django, reducing processing time by 20%</li>
+              <li>Implemented digital marketing integrations that increased restaurant partner orders by 30%</li>
+            </ul>
+            <div class="exp-tags">
+              <span>Python</span><span>Django</span><span>JavaScript</span><span>REST APIs</span><span>MySQL</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title gradient-text">Projects</h2>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card glass-card tilt-card reveal-item">
+          <div class="project-top-border" style="background: linear-gradient(90deg,#6c63ff,#00d4ff)"></div>
+          <div class="project-icon"><i class="fas fa-shield-halved"></i></div>
+          <h3 class="project-title">Visitation Access Control System</h3>
+          <p class="project-desc">Role-based access control system for LA County Probation — CJIS compliant, securing facility visitation data across multiple sites.</p>
+          <div class="project-tech">
+            <span>ASP.NET Core</span><span>C#</span><span>Azure AD</span><span>SQL Server</span><span>Blazor</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/dhananjay1906" target="_blank" class="project-link-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card tilt-card reveal-item">
+          <div class="project-top-border" style="background: linear-gradient(90deg,#00d4ff,#6c63ff)"></div>
+          <div class="project-icon"><i class="fas fa-vote-yea"></i></div>
+          <h3 class="project-title">E-Voting Using Blockchain</h3>
+          <p class="project-desc">Decentralized electronic voting system with Solidity smart contracts on Ethereum, ensuring transparent and tamper-proof elections.</p>
+          <div class="project-tech">
+            <span>Solidity</span><span>Ethereum</span><span>Ganache</span><span>Truffle</span><span>Metamask</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/dhananjay1906/E-Voting-Using-Blockchain" target="_blank" class="project-link-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card tilt-card reveal-item">
+          <div class="project-top-border" style="background: linear-gradient(90deg,#6c63ff,#ff6b9d)"></div>
+          <div class="project-icon"><i class="fas fa-comments"></i></div>
+          <h3 class="project-title">Realtime Chat WebApp</h3>
+          <p class="project-desc">Real-time bidirectional messaging application using WebSocket communication via Socket.io for instant, persistent chat sessions.</p>
+          <div class="project-tech">
+            <span>Node.js</span><span>Socket.io</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/dhananjay1906/Realtime-Chat-WebApp" target="_blank" class="project-link-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card tilt-card reveal-item">
+          <div class="project-top-border" style="background: linear-gradient(90deg,#ff6b9d,#00d4ff)"></div>
+          <div class="project-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+          <h3 class="project-title">NLP Disaster Tweet Classifier</h3>
+          <p class="project-desc">ML model leveraging NLP techniques to classify real vs. fake disaster-related tweets, achieving high accuracy with Python and scikit-learn.</p>
+          <div class="project-tech">
+            <span>Python</span><span>NLP</span><span>Machine Learning</span><span>SQL</span><span>Jupyter</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/dhananjay1906/Natural-Language-Processing-with-Disaster-Tweets" target="_blank" class="project-link-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card tilt-card reveal-item">
+          <div class="project-top-border" style="background: linear-gradient(90deg,#00d4ff,#ff6b9d)"></div>
+          <div class="project-icon"><i class="fas fa-pen-to-square"></i></div>
+          <h3 class="project-title">Blog Web App</h3>
+          <p class="project-desc">Full-stack blogging platform with MERN stack — content creation, editing, user auth, and sharing with a clean, responsive interface.</p>
+          <div class="project-tech">
+            <span>MongoDB</span><span>Express.js</span><span>React</span><span>Node.js</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/dhananjay1906/Blog-Web-App" target="_blank" class="project-link-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="project-card glass-card tilt-card reveal-item">
+          <div class="project-top-border" style="background: linear-gradient(90deg,#6c63ff,#00d4ff)"></div>
+          <div class="project-icon"><i class="fas fa-credit-card"></i></div>
+          <h3 class="project-title">ATM Interface with Angular</h3>
+          <p class="project-desc">Modern, intuitive ATM transaction UI built with Angular routing and reactive state management for seamless banking experiences.</p>
+          <div class="project-tech">
+            <span>Angular</span><span>TypeScript</span><span>HTML</span><span>CSS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/dhananjay1906" target="_blank" class="project-link-btn">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Agentic AI Spotlight -->
+  <section id="ai" class="section ai-section reveal">
+    <div class="ai-grid-bg"></div>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Frontier Tech</span>
+        <h2 class="section-title gradient-text">Building with AI</h2>
+      </div>
+      <div class="ai-grid">
+        <div class="ai-text">
+          <p class="ai-description">
+            I'm actively building <strong class="accent-text">autonomous AI agents</strong> using
+            the Claude API, LangChain, and Python. My current project is an end-to-end
+            <em>AI-powered job hunting system</em> — it finds jobs, scores them for fit,
+            tailors resumes using LLMs, auto-applies across multiple platforms, and monitors
+            email for interview invites.
+          </p>
+          <p class="ai-description" style="margin-top:1rem;">
+            I'm deeply exploring multi-agent orchestration, tool use, prompt engineering,
+            and agentic loops — combining my software engineering background with cutting-edge AI.
+          </p>
+          <div class="ai-tags">
+            <span class="ai-tag"><i class="fas fa-robot"></i> Claude API</span>
+            <span class="ai-tag"><i class="fas fa-link"></i> LangChain</span>
+            <span class="ai-tag"><i class="fab fa-python"></i> Python</span>
+            <span class="ai-tag"><i class="fas fa-sitemap"></i> Multi-Agent</span>
+            <span class="ai-tag"><i class="fas fa-wrench"></i> Tool Use</span>
+            <span class="ai-tag"><i class="fas fa-terminal"></i> Prompt Eng.</span>
+          </div>
+        </div>
+        <div class="ai-terminal">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">agent.py</span>
+          </div>
+          <div class="terminal-body">
+            <pre id="terminalCode" class="terminal-code"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="section education reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Academic Background</span>
+        <h2 class="section-title gradient-text">Education</h2>
+      </div>
+      <div class="education-grid">
+
+        <div class="edu-card glass-card reveal-item">
+          <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="edu-info">
+            <h3 class="edu-degree">MS Computer Science</h3>
+            <p class="edu-school">California State University, Los Angeles</p>
+            <p class="edu-dates">2022 – 2024</p>
+            <div class="edu-courses">
+              <span>Algorithms</span>
+              <span>Machine Learning</span>
+              <span>Database Systems</span>
+              <span>Cryptography</span>
+              <span>Advanced AI</span>
+              <span>Software Architecture</span>
+              <span>Data Science</span>
+              <span>Web Programming</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="edu-card glass-card reveal-item">
+          <div class="edu-icon"><i class="fas fa-university"></i></div>
+          <div class="edu-info">
+            <h3 class="edu-degree">BE Information Technology</h3>
+            <p class="edu-school">University of Mumbai</p>
+            <p class="edu-dates">2018 – 2022</p>
+            <div class="edu-courses">
+              <span>Data Structures</span>
+              <span>Internet Programming</span>
+              <span>Operating Systems</span>
+              <span>IoT</span>
+              <span>Cloud Services</span>
+              <span>Security Systems</span>
+              <span>Wireless Networks</span>
+              <span>Database Systems</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact reveal">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title gradient-text">Let's Build Something</h2>
+        <p class="contact-subtitle">
+          Open to <strong>Software Engineer</strong> roles in Los Angeles.<br />
+          <span class="h1b-badge"><i class="fas fa-check-circle"></i> H1B Transfer Welcome</span>
+        </p>
+      </div>
+      <div class="contact-cards">
+        <a href="mailto:dhananjaydesai2006@gmail.com" class="contact-card glass-card">
+          <div class="contact-icon" style="background: linear-gradient(135deg,#6c63ff,#00d4ff)">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Email</h3>
+          <p>dhananjaydesai2006@gmail.com</p>
+          <span class="contact-arrow"><i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="https://www.linkedin.com/in/dj1906/" target="_blank" class="contact-card glass-card">
+          <div class="contact-icon" style="background: linear-gradient(135deg,#0077b5,#00d4ff)">
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+          <h3>LinkedIn</h3>
+          <p>linkedin.com/in/dj1906</p>
+          <span class="contact-arrow"><i class="fas fa-arrow-right"></i></span>
+        </a>
+        <a href="https://github.com/dhananjay1906" target="_blank" class="contact-card glass-card">
+          <div class="contact-icon" style="background: linear-gradient(135deg,#333,#6c63ff)">
+            <i class="fab fa-github"></i>
+          </div>
+          <h3>GitHub</h3>
+          <p>github.com/dhananjay1906</p>
+          <span class="contact-arrow"><i class="fas fa-arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <span class="footer-logo gradient-text">DJ</span>
+      <p>© 2025 Dhananjay Yatin Desai · Built with Three.js + GSAP · Los Angeles, CA</p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/dj1906/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/dhananjay1906" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="mailto:dhananjaydesai2006@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- Main JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
