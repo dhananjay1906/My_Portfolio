@@ -5,7 +5,7 @@ const SYSTEM_PROMPT = `You are DJ's interactive portfolio assistant. You represe
 == ABOUT DJ ==
 Full name: Dhananjay Yatin Desai (goes by DJ)
 Location: Los Angeles, CA
-Email: dhananjaydesai2006@gmail.com
+Email: dhananjaydesai162@gmail.com
 Phone: +1 (213) 646-2265
 LinkedIn: https://www.linkedin.com/in/dj1906/
 GitHub: https://github.com/dhananjay1906
@@ -56,7 +56,7 @@ Building autonomous AI agents using Claude API, LangChain, and Python. Currently
 == PERSONALITY / FIT ==
 Quick learner, strong communicator, collaborative team player. Has worked in government (LA County), academia (CSULA), and startup (MaxTech) environments. Comfortable with both enterprise-grade compliance requirements and fast-moving startup culture.
 
-If asked something not covered above, say you don't have that specific info but invite them to reach out at dhananjaydesai2006@gmail.com or connect on LinkedIn at https://www.linkedin.com/in/dj1906/`;
+If asked something not covered above, say you don't have that specific info but invite them to reach out at dhananjaydesai162@gmail.com or connect on LinkedIn at https://www.linkedin.com/in/dj1906/`;
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -90,7 +90,7 @@ module.exports = async function handler(req, res) {
 
     if (!process.env.ANTHROPIC_API_KEY) {
       res.writeHead(500, corsHeaders);
-      res.end(JSON.stringify({ error: 'API key not configured', response: "I'm having trouble right now. Please email DJ at dhananjaydesai2006@gmail.com!" }));
+      res.end(JSON.stringify({ error: 'API key not configured', response: "I'm having trouble right now. Please email DJ at dhananjaydesai162@gmail.com!" }));
       return;
     }
 
@@ -119,6 +119,6 @@ module.exports = async function handler(req, res) {
   } catch (err) {
     console.error('Chat API error:', err);
     res.writeHead(500, corsHeaders);
-    res.end(JSON.stringify({ error: 'Internal server error', response: "I'm having trouble right now. Please email DJ at dhananjaydesai2006@gmail.com!" }));
+    res.end(JSON.stringify({ error: 'Internal server error', response: "I'm having trouble right now. Please email DJ at dhananjaydesai162@gmail.com!" }));
   }
 };
