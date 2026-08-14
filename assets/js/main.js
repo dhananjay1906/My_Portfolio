@@ -226,31 +226,35 @@ if (aiSection) terminalObs.observe(aiSection);
   const particles = new THREE.Points(particleGeo, particleMat);
   scene.add(particles);
 
-  /* ── Connection Lines ── */
-  const lineMat = new THREE.LineBasicMaterial({
-    color: 0x6c63ff,
-    transparent: true,
-    opacity: 0.15,
-  });
-  let lineGroup = new THREE.Group();
-  scene.add(lineGroup);
+  /* ── Connection Lines (pre-allocated buffer — no per-frame GPU allocs) ── */
+  const MAX_LINES = Math.floor(PARTICLE_COUNT * (PARTICLE_COUNT - 1) / 2);
+  const linePositions = new Float32Array(MAX_LINES * 6);
+  const lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x6c63ff, transparent: true, opacity: 0.13 });
+  const lineSegments = new THREE.LineSegments(lineGeo, lineMat);
+  scene.add(lineSegments);
 
   function updateLines() {
-    scene.remove(lineGroup);
-    lineGroup = new THREE.Group();
+    let idx = 0;
     const CONNECT_DIST = 3.2;
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       for (let j = i + 1; j < PARTICLE_COUNT; j++) {
+        if (idx >= MAX_LINES) break;
         const dist = positions[i].distanceTo(positions[j]);
         if (dist < CONNECT_DIST) {
-          const geo = new THREE.BufferGeometry().setFromPoints([positions[i], positions[j]]);
-          const line = new THREE.Line(geo, lineMat.clone());
-          line.material.opacity = (1 - dist / CONNECT_DIST) * 0.18;
-          lineGroup.add(line);
+          linePositions[idx * 6]     = positions[i].x;
+          linePositions[idx * 6 + 1] = positions[i].y;
+          linePositions[idx * 6 + 2] = positions[i].z;
+          linePositions[idx * 6 + 3] = positions[j].x;
+          linePositions[idx * 6 + 4] = positions[j].y;
+          linePositions[idx * 6 + 5] = positions[j].z;
+          idx++;
         }
       }
     }
-    scene.add(lineGroup);
+    lineGeo.setDrawRange(0, idx * 2);
+    lineGeo.attributes.position.needsUpdate = true;
   }
 
   /* ── 3D Icosahedron ── */
@@ -286,16 +290,32 @@ if (aiSection) terminalObs.observe(aiSection);
 
   scene.add(icosahedron, innerIco, torus);
 
-  /* ── Mouse Parallax ── */
-  let mouseX = 0, mouseY = 0;
+  /* ── Mouse + Scroll Parallax ── */
+  let mouseX = 0, mouseY = 0, scrollProgress = 0;
   document.addEventListener('mousemove', e => {
     mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
     mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
   });
+  window.addEventListener('scroll', () => {
+    scrollProgress = Math.min(window.scrollY / window.innerHeight, 1);
+    const fade = 1 - scrollProgress * 0.85;
+    icoMat.opacity   = 0.18 * fade;
+    innerMat.opacity = 0.10 * fade;
+    torusMat.opacity = 0.12 * fade;
+  }, { passive: true });
+
+  /* ── WebGL context loss guard ── */
+  canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); }, false);
+  canvas.addEventListener('webglcontextrestored', () => { animate(); }, false);
+
+  /* ── Pause when tab hidden ── */
+  let running = true;
+  document.addEventListener('visibilitychange', () => { running = !document.hidden; });
 
   /* ── Animate ── */
   let frameCount = 0;
   function animate() {
+    if (!running) { requestAnimationFrame(animate); return; }
     requestAnimationFrame(animate);
     frameCount++;
 
@@ -321,13 +341,14 @@ if (aiSection) terminalObs.observe(aiSection);
     torus.rotation.z += 0.003;
     torus.rotation.y += 0.002;
 
-    /* Parallax on shapes */
+    /* Parallax on shapes — mouse + scroll drift */
+    const scrollDrift = scrollProgress * 4;
     icosahedron.position.x = 3.5 + mouseX * 0.4;
-    icosahedron.position.y = mouseY * -0.3;
-    innerIco.position.x = 3.5 + mouseX * 0.4;
-    innerIco.position.y = mouseY * -0.3;
-    torus.position.x = 3.5 + mouseX * 0.3;
-    torus.position.y = mouseY * -0.25;
+    icosahedron.position.y = mouseY * -0.3 + scrollDrift;
+    innerIco.position.x    = 3.5 + mouseX * 0.4;
+    innerIco.position.y    = mouseY * -0.3 + scrollDrift;
+    torus.position.x       = 3.5 + mouseX * 0.3;
+    torus.position.y       = mouseY * -0.25 + scrollDrift * 0.8;
 
     /* Slight camera drift */
     camera.position.x += (mouseX * 0.2 - camera.position.x) * 0.04;
