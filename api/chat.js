@@ -119,6 +119,6 @@ module.exports = async function handler(req, res) {
   } catch (err) {
     console.error('Chat API error:', err);
     res.writeHead(500, corsHeaders);
-    res.end(JSON.stringify({ error: err.message || 'Internal server error', response: "I'm having trouble right now. Please email DJ at dhananjaydesai2006@gmail.com!" }));
+    res.end(JSON.stringify({ error: 'Internal server error', response: "I'm having trouble right now. Please email DJ at dhananjaydesai2006@gmail.com!" }));
   }
 };
