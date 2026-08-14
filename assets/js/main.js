@@ -194,7 +194,7 @@ if (aiSection) terminalObs.observe(aiSection);
   camera.position.z = 5;
 
   /* ── Particle Network ── */
-  const PARTICLE_COUNT = 120;
+  const PARTICLE_COUNT = window.innerWidth < 768 ? 60 : 120;
   const positions = [];
   const velocities = [];
   const particleGeo = new THREE.BufferGeometry();
@@ -458,3 +458,102 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     }
   });
 });
+
+/* ============================================================
+   AI CHAT WIDGET
+   ============================================================ */
+(function initChat() {
+  const chatToggle = document.getElementById('chatToggle');
+  const chatPanel = document.getElementById('chatPanel');
+  const chatIcon = document.getElementById('chatIcon');
+  const chatCloseIcon = document.getElementById('chatClose');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  const chatSuggestions = document.getElementById('chatSuggestions');
+
+  let chatOpen = false;
+  let chatHistory = [];
+  let isWaiting = false;
+
+  chatToggle.addEventListener('click', () => {
+    chatOpen = !chatOpen;
+    chatPanel.classList.toggle('open', chatOpen);
+    chatIcon.style.display = chatOpen ? 'none' : 'block';
+    chatCloseIcon.style.display = chatOpen ? 'block' : 'none';
+    if (chatOpen) chatInput.focus();
+  });
+
+  chatSuggestions.querySelectorAll('.suggestion-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chatSuggestions.style.display = 'none';
+      sendMessage(chip.dataset.q);
+    });
+  });
+
+  chatSend.addEventListener('click', () => {
+    const msg = chatInput.value.trim();
+    if (msg && !isWaiting) sendMessage(msg);
+  });
+
+  chatInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !isWaiting) {
+      const msg = chatInput.value.trim();
+      if (msg) sendMessage(msg);
+    }
+  });
+
+  function appendMessage(role, text) {
+    const div = document.createElement('div');
+    div.className = `chat-message ${role === 'user' ? 'user-message' : 'bot-message'}`;
+    div.innerHTML = `<div class="message-bubble">${text}</div>`;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return div;
+  }
+
+  function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'chat-message chat-typing';
+    div.id = 'typingIndicator';
+    div.innerHTML = `<div class="message-bubble"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>`;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function removeTyping() {
+    const t = document.getElementById('typingIndicator');
+    if (t) t.remove();
+  }
+
+  async function sendMessage(text) {
+    if (isWaiting) return;
+    chatInput.value = '';
+    isWaiting = true;
+    chatSend.disabled = true;
+
+    appendMessage('user', text);
+    chatHistory.push({ role: 'user', content: text });
+    showTyping();
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history: chatHistory.slice(-6) })
+      });
+      const data = await res.json();
+      removeTyping();
+      const reply = data.response || "Sorry, I had trouble with that. Try asking something else!";
+      appendMessage('bot', reply);
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch (err) {
+      removeTyping();
+      appendMessage('bot', 'Oops! The AI service is temporarily unavailable. Reach DJ directly at <a href="mailto:dhananjaydesai2006@gmail.com" style="color:#00d4ff">dhananjaydesai2006@gmail.com</a>');
+    }
+
+    isWaiting = false;
+    chatSend.disabled = false;
+    chatInput.focus();
+  }
+})();
