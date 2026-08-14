@@ -614,6 +614,45 @@
     </div>
   </footer>
 
+  <!-- AI Chat Widget -->
+  <div id="chatWidget">
+    <button id="chatToggle" aria-label="Chat with DJ's Resume">
+      <i class="fas fa-robot" id="chatIcon"></i>
+      <i class="fas fa-times" id="chatClose" style="display:none"></i>
+      <span class="chat-badge">AI</span>
+    </button>
+    <div id="chatPanel">
+      <div class="chat-header">
+        <div class="chat-avatar">DJ</div>
+        <div class="chat-header-info">
+          <h4>Ask DJ's AI Assistant</h4>
+          <span class="chat-status"><span class="status-dot"></span>Powered by Claude</span>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-message bot-message">
+          <div class="message-bubble">
+            Hey there! 👋 I'm DJ's AI assistant. Ask me anything about his experience, skills, or availability — I'm here to help hiring managers and recruiters get quick answers.
+          </div>
+        </div>
+        <div class="chat-suggestions" id="chatSuggestions">
+          <button class="suggestion-chip" data-q="What is DJ's tech stack?">Tech stack?</button>
+          <button class="suggestion-chip" data-q="What is his most recent work experience?">Recent work?</button>
+          <button class="suggestion-chip" data-q="Is DJ open to H1B transfer sponsorship?">H1B transfer?</button>
+          <button class="suggestion-chip" data-q="What projects has DJ built?">Projects?</button>
+          <button class="suggestion-chip" data-q="Is DJ available to start immediately?">Availability?</button>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Ask about experience, skills, availability..." maxlength="300" />
+        <button id="chatSend" aria-label="Send">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+      <div class="chat-footer">Resume-aware AI · Built with Claude API</div>
+    </div>
+  </div>
+
   <!-- Three.js -->
   <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
   <!-- GSAP -->
