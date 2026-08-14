@@ -1410,12 +1410,6 @@ img { max-width: 100%; }
 .code-val-available {
   color: #28c840;
   font-weight: 600;
-  text-shadow: 0 0 10px rgba(40,200,64,0.4);
-  animation: availablePulse 2.5s ease-in-out infinite;
-}
-@keyframes availablePulse {
-  0%, 100% { text-shadow: 0 0 8px rgba(40,200,64,0.3); }
-  50%       { text-shadow: 0 0 18px rgba(40,200,64,0.7); }
 }
 
 /* ============================================================

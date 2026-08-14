@@ -258,34 +258,41 @@ if (aiSection) terminalObs.observe(aiSection);
   }
 
   /* ── 3D Icosahedron ── */
+  const isMobile = window.innerWidth < 768;
+  const icoX = isMobile ? 0 : 3.5;
+  const icoScale = isMobile ? 0.65 : 1;
+
   const icoGeo = new THREE.IcosahedronGeometry(1.5, 1);
   const icoMat = new THREE.MeshBasicMaterial({
     color: 0x00d4ff,
     wireframe: true,
     transparent: true,
-    opacity: 0.18,
+    opacity: isMobile ? 0.35 : 0.18,
   });
   const icosahedron = new THREE.Mesh(icoGeo, icoMat);
-  icosahedron.position.set(3.5, 0, -1);
+  icosahedron.position.set(icoX, isMobile ? 1.5 : 0, -1);
+  icosahedron.scale.setScalar(icoScale);
 
   const innerGeo = new THREE.IcosahedronGeometry(1.0, 0);
   const innerMat = new THREE.MeshBasicMaterial({
     color: 0x6c63ff,
     wireframe: true,
     transparent: true,
-    opacity: 0.1,
+    opacity: isMobile ? 0.22 : 0.1,
   });
   const innerIco = new THREE.Mesh(innerGeo, innerMat);
-  innerIco.position.set(3.5, 0, -1);
+  innerIco.position.set(icoX, isMobile ? 1.5 : 0, -1);
+  innerIco.scale.setScalar(icoScale);
 
   const torusGeo = new THREE.TorusGeometry(2.2, 0.015, 8, 60);
   const torusMat = new THREE.MeshBasicMaterial({
     color: 0x6c63ff,
     transparent: true,
-    opacity: 0.12,
+    opacity: isMobile ? 0.22 : 0.12,
   });
   const torus = new THREE.Mesh(torusGeo, torusMat);
-  torus.position.set(3.5, 0, -1);
+  torus.position.set(icoX, isMobile ? 1.5 : 0, -1);
+  torus.scale.setScalar(icoScale);
   torus.rotation.x = Math.PI / 5;
 
   scene.add(icosahedron, innerIco, torus);
@@ -343,12 +350,12 @@ if (aiSection) terminalObs.observe(aiSection);
 
     /* Parallax on shapes — mouse + scroll drift */
     const scrollDrift = scrollProgress * 4;
-    icosahedron.position.x = 3.5 + mouseX * 0.4;
-    icosahedron.position.y = mouseY * -0.3 + scrollDrift;
-    innerIco.position.x    = 3.5 + mouseX * 0.4;
-    innerIco.position.y    = mouseY * -0.3 + scrollDrift;
-    torus.position.x       = 3.5 + mouseX * 0.3;
-    torus.position.y       = mouseY * -0.25 + scrollDrift * 0.8;
+    icosahedron.position.x = icoX + mouseX * (isMobile ? 0.1 : 0.4);
+    icosahedron.position.y = (isMobile ? 1.5 : 0) + mouseY * -0.3 + scrollDrift;
+    innerIco.position.x    = icoX + mouseX * (isMobile ? 0.1 : 0.4);
+    innerIco.position.y    = (isMobile ? 1.5 : 0) + mouseY * -0.3 + scrollDrift;
+    torus.position.x       = icoX + mouseX * (isMobile ? 0.08 : 0.3);
+    torus.position.y       = (isMobile ? 1.5 : 0) + mouseY * -0.25 + scrollDrift * 0.8;
 
     /* Slight camera drift */
     camera.position.x += (mouseX * 0.2 - camera.position.x) * 0.04;
@@ -570,7 +577,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
       chatHistory.push({ role: 'assistant', content: reply });
     } catch (err) {
       removeTyping();
-      appendMessage('bot', 'Oops! The AI service is temporarily unavailable. Reach DJ directly at <a href="mailto:dhananjaydesai2006@gmail.com" style="color:#00d4ff">dhananjaydesai2006@gmail.com</a>');
+      appendMessage('bot', 'Oops! The AI service is temporarily unavailable. Reach DJ directly at <a href="mailto:dhananjaydesai162@gmail.com" style="color:#00d4ff">dhananjaydesai162@gmail.com</a>');
     }
 
     isWaiting = false;
