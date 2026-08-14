@@ -88,6 +88,12 @@ module.exports = async function handler(req, res) {
       return;
     }
 
+    if (!process.env.ANTHROPIC_API_KEY) {
+      res.writeHead(500, corsHeaders);
+      res.end(JSON.stringify({ error: 'API key not configured', response: "I'm having trouble right now. Please email DJ at dhananjaydesai2006@gmail.com!" }));
+      return;
+    }
+
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
     // Build messages array: inject history + current message
